@@ -49,7 +49,7 @@ export default function HomePage() {
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto flex min-h-[78vh] w-full max-w-6xl flex-col justify-end gap-6 px-6 pb-14 pt-28 sm:px-8 sm:pb-16">
+        <div className="relative mx-auto flex min-h-[78vh] w-full max-w-6xl flex-col justify-end gap-6 px-6 pb-16 pt-32 sm:px-8 sm:pb-20">
           <p className="text-sm font-semibold tracking-[0.22em] text-lime-300 uppercase">
             Oddsline
           </p>
@@ -89,10 +89,10 @@ export default function HomePage() {
 
       <section
         id="markets"
-        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-12 sm:px-8 sm:py-16"
+        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20"
         aria-labelledby="markets-heading"
       >
-        <div className="mb-6 flex flex-col gap-2 sm:mb-8">
+        <div className="mb-8 flex flex-col gap-2 sm:mb-10">
           <h2
             id="markets-heading"
             className="text-2xl font-semibold tracking-tight"
@@ -113,8 +113,8 @@ export default function HomePage() {
         className="border-y border-border bg-muted/25"
         aria-labelledby="workflow-heading"
       >
-        <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
-          <div className="mb-8 flex max-w-2xl flex-col gap-2">
+        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+          <div className="mb-10 flex max-w-2xl flex-col gap-2">
             <h2
               id="workflow-heading"
               className="text-2xl font-semibold tracking-tight"
@@ -150,7 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 sm:py-14">
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
         <div className="flex flex-col gap-3 border-l-2 border-lime-400/70 pl-4 sm:pl-5">
           <h2 className="text-lg font-semibold tracking-tight">
             Stay in control

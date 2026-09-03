@@ -103,7 +103,7 @@ export function BetSlipContent({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+      <div className="flex-1 space-y-3 overflow-y-auto px-4 py-5">
         {selections.length > 1 && (
           <div
             className="grid grid-cols-2 gap-1 rounded-xl bg-muted p-1"
@@ -146,7 +146,7 @@ export function BetSlipContent({
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border-t border-border bg-background/90 px-4 py-4 backdrop-blur"
+        className="border-t border-border bg-background/90 px-4 py-5 backdrop-blur"
         noValidate
       >
         <div className="flex flex-col gap-3">

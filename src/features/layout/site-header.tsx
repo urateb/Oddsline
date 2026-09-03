@@ -6,7 +6,7 @@ import { BetSlipTrigger } from '@/features/bet-slip/bet-slip-panel';
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-border bg-background/95 px-4 py-3 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-border bg-background/95 px-4 py-4 backdrop-blur supports-backdrop-filter:bg-background/60 sm:px-6">
       <Link
         href="/"
         className="flex items-center gap-2 text-lg font-semibold tracking-tight"

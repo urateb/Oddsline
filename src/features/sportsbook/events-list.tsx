@@ -45,7 +45,7 @@ export function EventsList({
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-7">
       {groups.map(([competitionId, competitionEvents]) => (
         <section
           key={competitionId}
@@ -53,7 +53,7 @@ export function EventsList({
         >
           <h2
             id={`competition-${competitionId}`}
-            className="mb-2 text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase"
+            className="mb-3 text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase"
           >
             {competitionsById.get(competitionId)?.name ?? 'Competition'}
           </h2>

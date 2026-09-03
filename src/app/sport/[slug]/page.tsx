@@ -72,7 +72,7 @@ export default async function SportPage({ params }: SportPageProps) {
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-5 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-12 sm:px-6 sm:py-16">
           <Link
             href="/#markets"
             className="inline-flex w-fit items-center gap-1 text-sm text-white/70 transition-colors hover:text-white"
@@ -104,7 +104,7 @@ export default async function SportPage({ params }: SportPageProps) {
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-5 sm:px-6 sm:py-6">
+      <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
         <EventsList
           sportId={sport.id}
           initialEvents={events}

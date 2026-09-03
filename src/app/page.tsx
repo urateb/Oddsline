@@ -136,29 +136,27 @@ export default function HomePage() {
 
       <section
         id="markets"
-        className="scroll-mt-24 border-y border-lime-400/20 bg-lime-400/[0.07]"
+        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20"
         aria-labelledby="markets-heading"
       >
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
-          <div className="mb-8 flex flex-col gap-3 sm:mb-10">
-            <p className="text-xs font-semibold tracking-[0.18em] text-lime-600 uppercase dark:text-lime-300">
-              Main board
-            </p>
-            <h2
-              id="markets-heading"
-              className="text-3xl font-semibold tracking-tight sm:text-4xl"
-            >
-              Markets
-            </h2>
-            <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-              This is the core of Oddsline. Pick a sport to enter the live
-              board, follow prices as they move, and start building your slip.
-            </p>
-          </div>
-          <Suspense fallback={<SportsLobbySkeleton />}>
-            <SportsLobby />
-          </Suspense>
+        <div className="mb-8 flex flex-col gap-3 sm:mb-10">
+          <p className="text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+            Main board
+          </p>
+          <h2
+            id="markets-heading"
+            className="text-3xl font-semibold tracking-tight sm:text-4xl"
+          >
+            Markets
+          </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            This is the core of Oddsline. Pick a sport to enter the live board,
+            follow prices as they move, and start building your slip.
+          </p>
         </div>
+        <Suspense fallback={<SportsLobbySkeleton />}>
+          <SportsLobby />
+        </Suspense>
       </section>
 
       <section

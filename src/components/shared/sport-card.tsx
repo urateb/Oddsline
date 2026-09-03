@@ -35,7 +35,7 @@ export function SportCard({ sport, className }: SportCardProps) {
       href={`/sport/${sport.slug}`}
       aria-label={`View ${sport.name} events — ${sport.liveEventCount} live, ${sport.upcomingEventCount} upcoming`}
       className={cn(
-        'group flex items-center gap-3 rounded-xl border border-border/70 bg-card/80 px-3 py-3.5 shadow-xs transition-[border-color,background-color,box-shadow]',
+        'group flex items-center gap-3 rounded-xl border border-border/70 bg-card/80 px-3.5 py-5 shadow-xs transition-[border-color,background-color,box-shadow]',
         'hover:border-primary/35 hover:bg-accent/40',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,

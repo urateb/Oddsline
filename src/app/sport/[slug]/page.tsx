@@ -19,7 +19,7 @@ export async function generateMetadata({
   const sport = await getSportBySlug(slug);
 
   return {
-    title: sport ? `${sport.name} — Sportsbook` : 'Sportsbook',
+    title: sport ? `${sport.name} — Oddsline` : 'Oddsline',
   };
 }
 

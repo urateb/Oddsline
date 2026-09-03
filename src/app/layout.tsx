@@ -25,8 +25,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Sportsbook',
-  description: 'Live sportsbook — sports, events, and odds',
+  title: 'Oddsline',
+  description: 'Oddsline — live sports, events, and odds',
 };
 
 export default async function RootLayout({

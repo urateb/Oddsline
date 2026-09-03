@@ -1,8 +1,6 @@
 # Shared components
 
-Reusable Feature 4 components. Each has an exported `*Props` TypeScript interface
-(no `any`) with JSDoc on every prop. This README is the brief component overview
-required by the assignment.
+Reusable product UI used across features. Each component exports a `*Props` TypeScript interface (no `any`) with JSDoc on every prop.
 
 ## `OddsButton`
 

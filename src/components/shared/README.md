@@ -62,6 +62,17 @@ Live match time/period with a pulsing live indicator dot when `isRunning`.
 | `isRunning` | `boolean` | Drives the pulsing live dot.                              |
 | `className` | `string?` | Layout overrides.                                         |
 
+## `OddslineLogo`
+
+Brand mark (O + odds sparkline). Use alone with `title`, or next to the
+wordmark with no `title` so it stays decorative.
+
+| Prop        | Type      | Description                                      |
+| ----------- | --------- | ------------------------------------------------ |
+| `size`      | `number?` | Width/height in pixels (default `28`).           |
+| `title`     | `string?` | Accessible name when the logo is used alone.     |
+| `className` | `string?` | Layout overrides.                                |
+
 ## Other shared helpers
 
 | Component           | Notes                                                           |

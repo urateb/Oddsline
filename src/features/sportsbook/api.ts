@@ -61,3 +61,23 @@ export async function getResponsibleGambling(): Promise<ResponsibleGambling> {
 
   return data.responsibleGambling;
 }
+
+export async function getBoardStats() {
+  await delay(50);
+
+  const live = data.events.filter((event) => event.status === 'live').length;
+  const upcoming = data.events.filter(
+    (event) => event.status === 'upcoming',
+  ).length;
+  const markets = data.events.reduce(
+    (total, event) => total + event.markets.length,
+    0,
+  );
+
+  return {
+    sports: data.sports.length,
+    live,
+    upcoming,
+    markets,
+  };
+}

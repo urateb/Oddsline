@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { AppProviders } from '@/components/providers/app-providers';
 import { Toaster } from '@/components/ui/sonner';
 import { SiteHeader } from '@/features/layout/site-header';
+import { SiteFooter } from '@/features/layout/site-footer';
 import { RgBanner } from '@/features/responsible-gambling/rg-banner';
 import { BetSlipPanel } from '@/features/bet-slip/bet-slip-panel';
 import {
@@ -68,7 +69,8 @@ export default async function RootLayout({
             helplinePhone={responsibleGambling.helplinePhone}
           />
           <div className="flex flex-1 flex-col">
-            <div className="flex-1 pb-20 lg:pb-0">{children}</div>
+            <div className="flex flex-1 flex-col pb-20 lg:pb-0">{children}</div>
+            <SiteFooter />
             <BetSlipPanel config={betSlipConfig} />
           </div>
           <Toaster />

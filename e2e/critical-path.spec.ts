@@ -6,7 +6,7 @@ test('a player can add a selection, stake it, and place a bet', async ({
   await page.goto('/');
 
   await expect(
-    page.getByRole('heading', { name: 'Oddsline', exact: true }),
+    page.getByRole('heading', { name: 'Live odds. Sharper lines.' }),
   ).toBeVisible();
 
   await page.getByRole('link', { name: /view football events/i }).click();

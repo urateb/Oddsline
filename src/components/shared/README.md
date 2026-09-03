@@ -32,8 +32,8 @@ Memoized so only rows whose event data changed re-render under odds polling.
 
 ## `SportCard`
 
-Displays a sport’s icon, name, and live/upcoming event counts. Built on
-shadcn/ui `Card`. Links to `/sport/[slug]`.
+Sport market entry point: tinted icon well, name, live badge, event counts, and
+a chevron. Links to `/sport/[slug]`.
 
 | Prop        | Type      | Description       |
 | ----------- | --------- | ----------------- |

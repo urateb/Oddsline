@@ -10,10 +10,10 @@ export async function SportsLobby() {
     <div
       role="list"
       aria-label="Sports"
-      className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3"
     >
       {sports.map((sport) => (
-        <div role="listitem" key={sport.id}>
+        <div role="listitem" key={sport.id} className="min-w-0">
           <SportCard sport={sport} />
         </div>
       ))}
@@ -23,7 +23,7 @@ export async function SportsLobby() {
 
 export function SportsLobbySkeleton() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
       {Array.from({ length: 6 }, (_, index) => (
         <SportCardSkeleton key={index} />
       ))}

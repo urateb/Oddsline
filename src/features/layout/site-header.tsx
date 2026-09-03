@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { OddslineLogo } from '@/components/shared/oddsline-logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
+import { BetSlipTrigger } from '@/features/bet-slip/bet-slip-panel';
 
 export function SiteHeader() {
   return (
@@ -13,7 +14,10 @@ export function SiteHeader() {
         <OddslineLogo size={28} />
         <span>Oddsline</span>
       </Link>
-      <ThemeToggle />
+      <div className="flex items-center gap-2">
+        <BetSlipTrigger />
+        <ThemeToggle />
+      </div>
     </header>
   );
 }

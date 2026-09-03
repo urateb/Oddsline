@@ -14,7 +14,7 @@ export const THEME_STORAGE_KEY = 'sportsbook-theme';
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set, get) => ({
-      theme: 'light',
+      theme: 'dark',
       setTheme: (theme) => set({ theme }),
       toggleTheme: () =>
         set({ theme: get().theme === 'light' ? 'dark' : 'light' }),

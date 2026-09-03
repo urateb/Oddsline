@@ -55,7 +55,7 @@ export default async function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var r=localStorage.getItem('sportsbook-theme');var t=r?JSON.parse(r).state.theme:'light';document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`,
+            __html: `(function(){try{var r=localStorage.getItem('sportsbook-theme');var t=r?JSON.parse(r).state.theme:'dark';document.documentElement.classList.toggle('dark',t==='dark');}catch(e){document.documentElement.classList.add('dark');}})();`,
           }}
         />
       </head>
@@ -67,7 +67,7 @@ export default async function RootLayout({
             helplineUrl={responsibleGambling.helplineUrl}
             helplinePhone={responsibleGambling.helplinePhone}
           />
-          <div className="flex flex-1 flex-col lg:flex-row">
+          <div className="flex flex-1 flex-col">
             <div className="flex-1 pb-20 lg:pb-0">{children}</div>
             <BetSlipPanel config={betSlipConfig} />
           </div>

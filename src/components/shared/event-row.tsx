@@ -8,6 +8,7 @@ import {
   selectIsSelectionActive,
   useBetSlipStore,
 } from '@/stores/bet-slip-store';
+import { useUiStore } from '@/stores/ui-store';
 import type { Event, Selection } from '@/types/sportsbook';
 
 import { MatchClock } from './match-clock';
@@ -110,6 +111,7 @@ function ConnectedOddsButton({
 }: ConnectedOddsButtonProps) {
   const isSelected = useBetSlipStore(selectIsSelectionActive(selection.id));
   const toggleSelection = useBetSlipStore((state) => state.toggleSelection);
+  const setBetSlipOpen = useUiStore((state) => state.setBetSlipOpen);
 
   return (
     <OddsButton
@@ -117,7 +119,7 @@ function ConnectedOddsButton({
       odds={selection.odds}
       isSelected={isSelected}
       suspended={suspended}
-      onToggle={() =>
+      onToggle={() => {
         toggleSelection({
           selectionId: selection.id,
           eventId,
@@ -127,8 +129,11 @@ function ConnectedOddsButton({
           selectionName: selection.name,
           label: selection.label,
           odds: selection.odds,
-        })
-      }
+        });
+        if (!isSelected) {
+          setBetSlipOpen(true);
+        }
+      }}
     />
   );
 }

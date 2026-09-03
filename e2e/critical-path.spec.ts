@@ -18,9 +18,7 @@ test('a player can add a selection, stake it, and place a bet', async ({
   await oddsButton.click();
   await expect(oddsButton).toHaveAttribute('aria-pressed', 'true');
 
-  const betSlip = page
-    .getByRole('complementary')
-    .filter({ hasText: /bet slip/i });
+  const betSlip = page.getByRole('dialog').filter({ hasText: /bet slip/i });
   await expect(betSlip).toBeVisible();
   await expect(betSlip.getByText('1', { exact: true })).toBeVisible();
 

@@ -16,7 +16,7 @@ export async function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border bg-muted/20">
       <div className="mx-auto w-full max-w-6xl px-6 py-10 sm:px-8 sm:py-12">
-        <dl className="grid gap-8 border-b border-border pb-8 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="grid gap-6 border-b border-border pb-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {kpis.map((kpi) => (
             <div key={kpi.label} className="flex flex-col gap-1">
               <dt className="text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
@@ -29,7 +29,7 @@ export async function SiteFooter() {
           ))}
         </dl>
 
-        <div className="flex flex-col gap-6 pt-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="grid gap-10 pt-8 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] sm:gap-12">
           <div className="flex flex-col gap-3">
             <Link
               href="/"
@@ -38,42 +38,58 @@ export async function SiteFooter() {
               <OddslineLogo size={24} />
               Oddsline
             </Link>
-            <p className="max-w-sm text-sm text-muted-foreground">
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               Live sportsbook workspace — follow the board, build a slip, stay
               in control.
             </p>
-          </div>
-
-          <div className="flex flex-col gap-2 text-sm sm:items-end">
-            <p className="text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Odds refresh every 1–3s on live boards
             </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 sm:justify-end">
-              <Link
-                href="/#markets"
-                className="text-foreground underline-offset-4 hover:underline"
-              >
-                Markets
-              </Link>
-              <Link
-                href="/sport/football"
-                className="text-foreground underline-offset-4 hover:underline"
-              >
-                Football
-              </Link>
-              <a
-                href="https://www.begambleaware.org/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-foreground underline-offset-4 hover:underline"
-              >
-                BeGambleAware
-              </a>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Demo product · 18+ only · Play responsibly
-            </p>
           </div>
+
+          <div className="grid grid-cols-2 gap-8 sm:justify-items-start">
+            <div className="flex flex-col gap-3">
+              <p className="text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
+                Explore
+              </p>
+              <nav className="flex flex-col gap-2 text-sm">
+                <Link
+                  href="/#markets"
+                  className="w-fit text-foreground underline-offset-4 hover:underline"
+                >
+                  Markets
+                </Link>
+                <Link
+                  href="/sport/football"
+                  className="w-fit text-foreground underline-offset-4 hover:underline"
+                >
+                  Football
+                </Link>
+              </nav>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <p className="text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
+                Support
+              </p>
+              <nav className="flex flex-col gap-2 text-sm">
+                <a
+                  href="https://www.begambleaware.org/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-fit text-foreground underline-offset-4 hover:underline"
+                >
+                  BeGambleAware
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 border-t border-border pt-6">
+          <p className="text-xs text-muted-foreground">
+            Demo product · 18+ only · Play responsibly
+          </p>
         </div>
       </div>
     </footer>

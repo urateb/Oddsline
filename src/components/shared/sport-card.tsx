@@ -28,33 +28,38 @@ const ICON_WELL: Record<string, string> = {
 export function SportCard({ sport, className }: SportCardProps) {
   const hasLive = sport.liveEventCount > 0;
   const wellClass =
-    ICON_WELL[sport.slug] ??
-    'bg-muted text-foreground ring-border/60';
+    ICON_WELL[sport.slug] ?? 'bg-muted text-foreground ring-border/60';
 
   return (
     <Link
       href={`/sport/${sport.slug}`}
       aria-label={`View ${sport.name} events — ${sport.liveEventCount} live, ${sport.upcomingEventCount} upcoming`}
       className={cn(
-        'group flex h-full items-center gap-4 rounded-xl border border-border/80 bg-card p-4 shadow-xs transition-[border-color,background-color,box-shadow,transform]',
-        'hover:border-primary/40 hover:bg-accent/40 hover:shadow-sm',
+        'group relative flex aspect-square h-full flex-col justify-between rounded-2xl border border-border/80 bg-card p-5 shadow-xs transition-[border-color,background-color,box-shadow,transform]',
+        'hover:border-primary/40 hover:bg-accent/30 hover:shadow-sm',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
     >
-      <span
-        className={cn(
-          'flex size-12 shrink-0 items-center justify-center rounded-xl text-2xl ring-1',
-          wellClass,
-        )}
-        aria-hidden="true"
-      >
-        {sport.icon}
-      </span>
+      <div className="flex items-start justify-between gap-3">
+        <span
+          className={cn(
+            'flex size-14 items-center justify-center rounded-2xl text-3xl ring-1',
+            wellClass,
+          )}
+          aria-hidden="true"
+        >
+          {sport.icon}
+        </span>
+        <ChevronRight
+          className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+          aria-hidden="true"
+        />
+      </div>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-        <div className="flex items-center gap-2">
-          <span className="truncate text-base font-semibold tracking-tight">
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-lg font-semibold tracking-tight">
             {sport.name}
           </span>
           {hasLive && (
@@ -68,35 +73,25 @@ export function SportCard({ sport, className }: SportCardProps) {
           )}
         </div>
 
-        <dl className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <dt className="sr-only">Live events</dt>
-            <dd>
-              <span className="tabular-nums font-medium text-foreground">
-                {sport.liveEventCount}
-              </span>{' '}
-              live
+        <dl className="grid grid-cols-2 gap-2 text-sm">
+          <div className="rounded-xl bg-muted/60 px-3 py-2">
+            <dt className="text-[11px] tracking-wide text-muted-foreground uppercase">
+              Live
+            </dt>
+            <dd className="mt-0.5 text-base font-semibold tabular-nums">
+              {sport.liveEventCount}
             </dd>
           </div>
-          <span aria-hidden="true" className="text-border">
-            ·
-          </span>
-          <div className="flex items-center gap-1">
-            <dt className="sr-only">Upcoming events</dt>
-            <dd>
-              <span className="tabular-nums font-medium text-foreground">
-                {sport.upcomingEventCount}
-              </span>{' '}
-              upcoming
+          <div className="rounded-xl bg-muted/60 px-3 py-2">
+            <dt className="text-[11px] tracking-wide text-muted-foreground uppercase">
+              Upcoming
+            </dt>
+            <dd className="mt-0.5 text-base font-semibold tabular-nums">
+              {sport.upcomingEventCount}
             </dd>
           </div>
         </dl>
       </div>
-
-      <ChevronRight
-        className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
-        aria-hidden="true"
-      />
     </Link>
   );
 }

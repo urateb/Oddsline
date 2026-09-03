@@ -22,26 +22,26 @@ export function BetSlipCard({
   return (
     <div
       className={cn(
-        'flex items-start justify-between gap-2 rounded-md border border-border bg-card p-3',
+        'flex items-start justify-between gap-3 rounded-xl border border-border/80 bg-background p-3 shadow-xs',
         className,
       )}
     >
-      <div className="flex min-w-0 flex-col gap-0.5">
-        <span className="truncate text-xs text-muted-foreground">
-          {selection.eventName}
+      <div className="flex min-w-0 flex-col gap-1">
+        <span className="truncate text-[11px] tracking-wide text-muted-foreground uppercase">
+          {selection.marketName}
         </span>
-        <span className="truncate text-sm font-medium">
+        <span className="truncate text-sm font-semibold tracking-tight">
           {selection.selectionName}
-          <span className="ml-1 text-muted-foreground">
+          <span className="ml-1 font-medium text-muted-foreground">
             ({selection.label})
           </span>
         </span>
         <span className="truncate text-xs text-muted-foreground">
-          {selection.marketName}
+          {selection.eventName}
         </span>
       </div>
-      <div className="flex shrink-0 items-center gap-2">
-        <span className="text-sm font-semibold tabular-nums">
+      <div className="flex shrink-0 flex-col items-end gap-1">
+        <span className="rounded-md bg-muted px-2 py-1 text-sm font-semibold tabular-nums">
           {formatOdds(selection.odds)}
         </span>
         <Button

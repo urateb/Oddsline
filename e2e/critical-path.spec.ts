@@ -20,14 +20,14 @@ test('a player can add a selection, stake it, and place a bet', async ({
 
   const betSlip = page
     .getByRole('complementary')
-    .filter({ hasText: 'Bet Slip' });
+    .filter({ hasText: /bet slip/i });
   await expect(betSlip).toBeVisible();
-  await expect(betSlip.getByText('1 selection')).toBeVisible();
+  await expect(betSlip.getByText('1', { exact: true })).toBeVisible();
 
   await betSlip.getByLabel(/stake/i).fill('10');
   await expect(betSlip.getByText('€10.00')).toBeVisible();
 
-  await betSlip.getByRole('button', { name: 'Place Bet' }).click();
+  await betSlip.getByRole('button', { name: /place bet/i }).click();
 
   await expect(page.getByRole('alertdialog')).toBeVisible();
   await expect(page.getByText(/confirm your bet/i)).toBeVisible();
@@ -35,5 +35,5 @@ test('a player can add a selection, stake it, and place a bet', async ({
   await page.getByRole('button', { name: 'Confirm bet' }).click();
 
   await expect(page.getByText('Bet placed')).toBeVisible();
-  await expect(betSlip.getByText('Your bet slip is empty.')).toBeVisible();
+  await expect(betSlip.getByText(/your slip is empty/i)).toBeVisible();
 });

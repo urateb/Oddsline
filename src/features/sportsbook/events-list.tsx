@@ -9,16 +9,25 @@ import { useSportEvents } from './use-sport-events';
 
 export interface EventsListProps {
   sportId: string;
+  sportSlug: string;
   initialEvents: Event[];
   competitions: Competition[];
+  dataSource: 'live' | 'mock';
 }
 
 export function EventsList({
   sportId,
+  sportSlug,
   initialEvents,
   competitions,
+  dataSource,
 }: EventsListProps) {
-  const { data: events } = useSportEvents({ sportId, initialEvents });
+  const { data: events } = useSportEvents({
+    sportId,
+    sportSlug,
+    initialEvents,
+    dataSource,
+  });
 
   const competitionsById = useMemo(
     () =>

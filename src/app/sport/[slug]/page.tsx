@@ -6,6 +6,7 @@ import { ChevronLeft } from 'lucide-react';
 
 import {
   getCompetitionsBySport,
+  getDataSourceLabel,
   getEventsBySport,
   getSportBySlug,
 } from '@/features/sportsbook/api';
@@ -50,6 +51,7 @@ export default async function SportPage({ params }: SportPageProps) {
 
   const background =
     SPORT_BACKGROUNDS[sport.slug] ?? SPORT_BACKGROUNDS.football;
+  const dataSource = getDataSourceLabel(sport.slug);
   const liveCount = events.filter((event) => event.status === 'live').length;
 
   return (
@@ -97,6 +99,8 @@ export default async function SportPage({ params }: SportPageProps) {
                   {liveCount > 0
                     ? `${liveCount} live right now · odds updating`
                     : 'Upcoming fixtures · lines ready'}
+                  {' · '}
+                  {dataSource === 'live' ? 'live feed' : 'demo feed'}
                 </p>
               </div>
             </div>
@@ -107,8 +111,10 @@ export default async function SportPage({ params }: SportPageProps) {
       <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
         <EventsList
           sportId={sport.id}
+          sportSlug={sport.slug}
           initialEvents={events}
           competitions={competitions}
+          dataSource={dataSource}
         />
       </div>
     </main>

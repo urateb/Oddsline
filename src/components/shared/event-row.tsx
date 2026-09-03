@@ -29,7 +29,7 @@ function EventRowImpl({ event, className }: EventRowProps) {
   return (
     <div
       className={cn(
-        'flex flex-col gap-3 border-b border-border/60 py-3 last:border-b-0 sm:flex-row sm:items-center sm:justify-between',
+        'flex flex-col gap-3 border-b border-border/60 px-3 py-3 last:border-b-0 sm:flex-row sm:items-center sm:justify-between sm:px-4',
         className,
       )}
     >

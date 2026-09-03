@@ -25,9 +25,59 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const SITE_URL = 'https://oddsline-sports.vercel.app';
+const SITE_DESCRIPTION =
+  'A production-minded sportsbook frontend exploring real-time data, complex client state and interactive betting flows.';
+
 export const metadata: Metadata = {
-  title: 'Oddsline',
-  description: 'Oddsline — live sports, events, and odds',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Oddsline',
+    template: '%s — Oddsline',
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: 'Oddsline',
+  authors: [{ name: 'Urate', url: 'https://github.com/urateb' }],
+  creator: 'Urate',
+  keywords: [
+    'sportsbook',
+    'live odds',
+    'bet slip',
+    'Next.js',
+    'TanStack Query',
+    'Zustand',
+    'TypeScript',
+  ],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    url: SITE_URL,
+    siteName: 'Oddsline',
+    title: 'Oddsline',
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: '/og.png',
+        width: 1280,
+        height: 640,
+        alt: 'Oddsline — live sportsbook workspace',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Oddsline',
+    description: SITE_DESCRIPTION,
+    images: ['/og.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  category: 'technology',
 };
 
 export default async function RootLayout({

@@ -1,6 +1,6 @@
 # Oddsline
 
-A production-style sportsbook frontend exploring real-time data, complex client state and interactive betting flows.
+A production-minded sportsbook frontend exploring real-time data, complex client state and interactive betting flows.
 
 **[Live Demo](https://oddsline-sports.vercel.app/)** · **[Screenshots](#screenshots)**
 

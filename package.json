@@ -2,6 +2,16 @@
   "name": "oddsline",
   "version": "0.1.0",
   "private": true,
+  "description": "A production-minded sportsbook frontend exploring real-time data, complex client state and interactive betting flows.",
+  "homepage": "https://oddsline-sports.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urateb/Oddsline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/urateb/Oddsline/issues"
+  },
+  "author": "Urate",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

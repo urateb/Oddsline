@@ -1,0 +1,69 @@
+'use client';
+
+import { useMemo } from 'react';
+
+import { EventRow } from '@/components/shared/event-row';
+import type { Competition, Event } from '@/types/sportsbook';
+
+import { useSportEvents } from './use-sport-events';
+
+export interface EventsListProps {
+  sportId: string;
+  initialEvents: Event[];
+  competitions: Competition[];
+}
+
+export function EventsList({
+  sportId,
+  initialEvents,
+  competitions,
+}: EventsListProps) {
+  const { data: events } = useSportEvents({ sportId, initialEvents });
+
+  const competitionsById = useMemo(
+    () =>
+      new Map(competitions.map((competition) => [competition.id, competition])),
+    [competitions],
+  );
+
+  const groups = useMemo(() => {
+    const grouped = new Map<string, Event[]>();
+    for (const event of events) {
+      const eventsForCompetition = grouped.get(event.competitionId) ?? [];
+      eventsForCompetition.push(event);
+      grouped.set(event.competitionId, eventsForCompetition);
+    }
+    return Array.from(grouped.entries());
+  }, [events]);
+
+  if (groups.length === 0) {
+    return (
+      <p className="text-sm text-muted-foreground">
+        No events scheduled for this sport right now.
+      </p>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      {groups.map(([competitionId, competitionEvents]) => (
+        <section
+          key={competitionId}
+          aria-labelledby={`competition-${competitionId}`}
+        >
+          <h2
+            id={`competition-${competitionId}`}
+            className="mb-2 text-sm font-semibold text-muted-foreground"
+          >
+            {competitionsById.get(competitionId)?.name ?? 'Competition'}
+          </h2>
+          <div className="rounded-lg border border-border bg-card px-4">
+            {competitionEvents.map((event) => (
+              <EventRow key={event.id} event={event} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}

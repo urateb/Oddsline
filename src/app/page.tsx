@@ -1,38 +1,165 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { Suspense } from 'react';
+import { ArrowDown, LineChart, Ticket, Zap } from 'lucide-react';
 
+import { buttonVariants } from '@/components/ui/button';
 import {
   SportsLobby,
   SportsLobbySkeleton,
 } from '@/features/sportsbook/sports-lobby';
+import { cn } from '@/lib/utils';
+
+const STEPS = [
+  {
+    icon: Zap,
+    title: 'Follow live lines',
+    body: 'Open a sport and watch prices shorten or drift as the match moves.',
+  },
+  {
+    icon: Ticket,
+    title: 'Build your slip',
+    body: 'Tap odds to add legs, set a stake, and preview returns instantly.',
+  },
+  {
+    icon: LineChart,
+    title: 'Confirm with clarity',
+    body: 'Review the ticket, place the bet, and keep responsible limits in view.',
+  },
+] as const;
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 p-6 sm:gap-10 sm:p-8">
-      <header className="flex max-w-2xl flex-col gap-3">
-        <p className="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">
-          Sports markets
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          Live odds. Sharper lines.
-        </h1>
-        <p className="max-w-lg text-base text-muted-foreground sm:text-lg">
-          Jump into a sport, follow the board as prices move, and build your
-          slip in one place.
-        </p>
-      </header>
+    <main className="flex flex-1 flex-col">
+      <section className="relative isolate min-h-[78vh] overflow-hidden border-b border-border">
+        <Image
+          src="/hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/20"
+          aria-hidden="true"
+        />
 
-      <section className="flex flex-col gap-4" aria-labelledby="sports-heading">
-        <div className="flex items-end justify-between gap-3">
+        <div className="relative mx-auto flex min-h-[78vh] w-full max-w-6xl flex-col justify-end gap-6 px-6 pb-14 pt-28 sm:px-8 sm:pb-16">
+          <p className="text-sm font-semibold tracking-[0.22em] text-lime-300 uppercase">
+            Oddsline
+          </p>
+          <div className="flex max-w-2xl flex-col gap-4">
+            <h1 className="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl lg:text-6xl">
+              Read the line.
+              <span className="block text-lime-300">Ride the move.</span>
+            </h1>
+            <p className="max-w-xl text-base text-white/75 sm:text-lg">
+              A focused sportsbook workspace for live markets — sharp prices,
+              one slip, and less noise between you and the board.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#markets"
+              className={cn(
+                buttonVariants({ size: 'lg' }),
+                'bg-lime-400 text-black hover:bg-lime-300',
+              )}
+            >
+              Browse markets
+              <ArrowDown className="size-4" aria-hidden="true" />
+            </a>
+            <Link
+              href="/sport/football"
+              className={cn(
+                buttonVariants({ size: 'lg', variant: 'outline' }),
+                'border-white/25 bg-black/20 text-white hover:bg-black/35 hover:text-white',
+              )}
+            >
+              Open football
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="markets"
+        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-12 sm:px-8 sm:py-16"
+        aria-labelledby="markets-heading"
+      >
+        <div className="mb-6 flex flex-col gap-2 sm:mb-8">
           <h2
-            id="sports-heading"
-            className="text-sm font-medium tracking-wide text-muted-foreground uppercase"
+            id="markets-heading"
+            className="text-2xl font-semibold tracking-tight"
           >
-            Browse sports
+            Markets
           </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Pick a sport to enter the live board. Counts update with the
+            catalog — jump straight into what&apos;s running now.
+          </p>
         </div>
         <Suspense fallback={<SportsLobbySkeleton />}>
           <SportsLobby />
         </Suspense>
+      </section>
+
+      <section
+        className="border-y border-border bg-muted/25"
+        aria-labelledby="workflow-heading"
+      >
+        <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
+          <div className="mb-8 flex max-w-2xl flex-col gap-2">
+            <h2
+              id="workflow-heading"
+              className="text-2xl font-semibold tracking-tight"
+            >
+              Built like a tool, not a brochure
+            </h2>
+            <p className="text-sm text-muted-foreground sm:text-base">
+              Three moves from board to ticket — designed for people who
+              actually watch the odds.
+            </p>
+          </div>
+
+          <ol className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+            {STEPS.map((step, index) => (
+              <li key={step.title} className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-lime-400/15 text-lime-600 dark:text-lime-300">
+                    <step.icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <span className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">
+                    Step {index + 1}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 sm:py-14">
+        <div className="flex flex-col gap-3 border-l-2 border-lime-400/70 pl-4 sm:pl-5">
+          <h2 className="text-lg font-semibold tracking-tight">
+            Stay in control
+          </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Oddsline keeps session time and responsible gambling resources
+            visible while you bet. Use the slip for decisions — not impulse.
+          </p>
+        </div>
       </section>
     </main>
   );

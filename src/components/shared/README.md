@@ -32,8 +32,8 @@ Memoized so only rows whose event data changed re-render under odds polling.
 
 ## `SportCard`
 
-Sport market entry point: tinted icon well, name, live badge, event counts, and
-a chevron. Links to `/sport/[slug]`.
+Compact sport market entry: tinted icon, name, live badge, event counts, and
+chevron. Links to `/sport/[slug]`.
 
 | Prop        | Type      | Description       |
 | ----------- | --------- | ----------------- |

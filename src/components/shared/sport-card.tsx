@@ -35,63 +35,43 @@ export function SportCard({ sport, className }: SportCardProps) {
       href={`/sport/${sport.slug}`}
       aria-label={`View ${sport.name} events — ${sport.liveEventCount} live, ${sport.upcomingEventCount} upcoming`}
       className={cn(
-        'group relative flex aspect-[5/4] h-full flex-col justify-between gap-4 rounded-2xl border border-border/80 bg-card p-4 shadow-xs transition-[border-color,background-color,box-shadow,transform]',
-        'hover:border-primary/40 hover:bg-accent/30 hover:shadow-sm',
+        'group flex items-center gap-3 rounded-xl border border-border/70 bg-card/80 px-3 py-3 shadow-xs transition-[border-color,background-color,box-shadow]',
+        'hover:border-primary/35 hover:bg-accent/40',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <span
-          className={cn(
-            'flex size-11 items-center justify-center rounded-xl text-2xl ring-1',
-            wellClass,
-          )}
-          aria-hidden="true"
-        >
-          {sport.icon}
-        </span>
-        <ChevronRight
-          className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
-          aria-hidden="true"
-        />
-      </div>
+      <span
+        className={cn(
+          'flex size-9 shrink-0 items-center justify-center rounded-lg text-lg ring-1',
+          wellClass,
+        )}
+        aria-hidden="true"
+      >
+        {sport.icon}
+      </span>
 
-      <div className="flex flex-col gap-2.5">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-base font-semibold tracking-tight">
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-1.5">
+          <span className="truncate text-sm font-semibold tracking-tight">
             {sport.name}
           </span>
           {hasLive && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-red-600 uppercase dark:text-red-400">
-              <span className="relative flex size-1.5" aria-hidden="true">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-red-500 opacity-75" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-red-500" />
-              </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[9px] font-semibold tracking-wide text-red-600 uppercase dark:text-red-400">
+              <span className="size-1 rounded-full bg-red-500" aria-hidden="true" />
               Live
             </span>
           )}
         </div>
-
-        <dl className="grid grid-cols-2 gap-1.5 text-sm">
-          <div className="rounded-lg bg-muted/60 px-2.5 py-1.5">
-            <dt className="text-[10px] tracking-wide text-muted-foreground uppercase">
-              Live
-            </dt>
-            <dd className="text-sm font-semibold tabular-nums">
-              {sport.liveEventCount}
-            </dd>
-          </div>
-          <div className="rounded-lg bg-muted/60 px-2.5 py-1.5">
-            <dt className="text-[10px] tracking-wide text-muted-foreground uppercase">
-              Upcoming
-            </dt>
-            <dd className="text-sm font-semibold tabular-nums">
-              {sport.upcomingEventCount}
-            </dd>
-          </div>
-        </dl>
+        <p className="mt-0.5 text-xs text-muted-foreground tabular-nums">
+          {sport.liveEventCount} live · {sport.upcomingEventCount} upcoming
+        </p>
       </div>
+
+      <ChevronRight
+        className="size-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+        aria-hidden="true"
+      />
     </Link>
   );
 }

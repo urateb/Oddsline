@@ -1,0 +1,950 @@
+{
+  "sports": [
+    {
+      "id": "sport_football",
+      "name": "Football",
+      "slug": "football",
+      "icon": "⚽",
+      "liveEventCount": 12,
+      "upcomingEventCount": 34,
+      "order": 1
+    },
+    {
+      "id": "sport_basketball",
+      "name": "Basketball",
+      "slug": "basketball",
+      "icon": "🏀",
+      "liveEventCount": 6,
+      "upcomingEventCount": 18,
+      "order": 2
+    },
+    {
+      "id": "sport_tennis",
+      "name": "Tennis",
+      "slug": "tennis",
+      "icon": "🎾",
+      "liveEventCount": 8,
+      "upcomingEventCount": 22,
+      "order": 3
+    },
+    {
+      "id": "sport_ice_hockey",
+      "name": "Ice Hockey",
+      "slug": "ice-hockey",
+      "icon": "🏒",
+      "liveEventCount": 4,
+      "upcomingEventCount": 12,
+      "order": 4
+    },
+    {
+      "id": "sport_cricket",
+      "name": "Cricket",
+      "slug": "cricket",
+      "icon": "🏏",
+      "liveEventCount": 3,
+      "upcomingEventCount": 9,
+      "order": 5
+    },
+    {
+      "id": "sport_esports",
+      "name": "Esports",
+      "slug": "esports",
+      "icon": "🎮",
+      "liveEventCount": 5,
+      "upcomingEventCount": 15,
+      "order": 6
+    }
+  ],
+
+  "competitions": [
+    {
+      "id": "comp_epl",
+      "name": "English Premier League",
+      "sportId": "sport_football",
+      "country": "England",
+      "countryCode": "GB-ENG"
+    },
+    {
+      "id": "comp_laliga",
+      "name": "La Liga",
+      "sportId": "sport_football",
+      "country": "Spain",
+      "countryCode": "ES"
+    },
+    {
+      "id": "comp_ucl",
+      "name": "UEFA Champions League",
+      "sportId": "sport_football",
+      "country": "Europe",
+      "countryCode": "EU"
+    },
+    {
+      "id": "comp_bundesliga",
+      "name": "Bundesliga",
+      "sportId": "sport_football",
+      "country": "Germany",
+      "countryCode": "DE"
+    },
+    {
+      "id": "comp_nba",
+      "name": "NBA",
+      "sportId": "sport_basketball",
+      "country": "USA",
+      "countryCode": "US"
+    },
+    {
+      "id": "comp_euroleague",
+      "name": "EuroLeague",
+      "sportId": "sport_basketball",
+      "country": "Europe",
+      "countryCode": "EU"
+    },
+    {
+      "id": "comp_atp",
+      "name": "ATP Tour",
+      "sportId": "sport_tennis",
+      "country": "International",
+      "countryCode": "INTL"
+    },
+    {
+      "id": "comp_wta",
+      "name": "WTA Tour",
+      "sportId": "sport_tennis",
+      "country": "International",
+      "countryCode": "INTL"
+    },
+    {
+      "id": "comp_nhl",
+      "name": "NHL",
+      "sportId": "sport_ice_hockey",
+      "country": "USA",
+      "countryCode": "US"
+    },
+    {
+      "id": "comp_ipl",
+      "name": "Indian Premier League",
+      "sportId": "sport_cricket",
+      "country": "India",
+      "countryCode": "IN"
+    },
+    {
+      "id": "comp_lol_worlds",
+      "name": "League of Legends - LEC",
+      "sportId": "sport_esports",
+      "country": "International",
+      "countryCode": "INTL"
+    },
+    {
+      "id": "comp_csgo_major",
+      "name": "CS2 - ESL Pro League",
+      "sportId": "sport_esports",
+      "country": "International",
+      "countryCode": "INTL"
+    }
+  ],
+
+  "events": [
+    {
+      "id": "evt_001",
+      "sportId": "sport_football",
+      "competitionId": "comp_epl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_ars",
+        "name": "Arsenal",
+        "shortName": "ARS",
+        "logo": "/teams/arsenal.svg"
+      },
+      "awayTeam": {
+        "id": "team_mci",
+        "name": "Manchester City",
+        "shortName": "MCI",
+        "logo": "/teams/man-city.svg"
+      },
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "matchClock": {
+        "minute": 67,
+        "period": "2H",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T15:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_001_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_001_h", "name": "Arsenal", "label": "1", "odds": 1.65, "previousOdds": 1.72, "trend": "shortening" },
+            { "id": "sel_001_d", "name": "Draw", "label": "X", "odds": 4.20, "previousOdds": 4.10, "trend": "drifting" },
+            { "id": "sel_001_a", "name": "Manchester City", "label": "2", "odds": 4.80, "previousOdds": 4.50, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_001_ou",
+          "name": "Over/Under 2.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_001_ov", "name": "Over 2.5", "label": "Over", "odds": 1.45, "previousOdds": 1.50, "trend": "shortening" },
+            { "id": "sel_001_un", "name": "Under 2.5", "label": "Under", "odds": 2.75, "previousOdds": 2.65, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_001_btts",
+          "name": "Both Teams to Score",
+          "type": "YES_NO",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_001_btts_y", "name": "Yes", "label": "Yes", "odds": 1.30, "previousOdds": 1.35, "trend": "shortening" },
+            { "id": "sel_001_btts_n", "name": "No", "label": "No", "odds": 3.40, "previousOdds": 3.25, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_002",
+      "sportId": "sport_football",
+      "competitionId": "comp_epl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_liv",
+        "name": "Liverpool",
+        "shortName": "LIV",
+        "logo": "/teams/liverpool.svg"
+      },
+      "awayTeam": {
+        "id": "team_che",
+        "name": "Chelsea",
+        "shortName": "CHE",
+        "logo": "/teams/chelsea.svg"
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "matchClock": {
+        "minute": 23,
+        "period": "1H",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T15:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_002_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_002_h", "name": "Liverpool", "label": "1", "odds": 1.90, "previousOdds": 1.85, "trend": "drifting" },
+            { "id": "sel_002_d", "name": "Draw", "label": "X", "odds": 3.50, "previousOdds": 3.55, "trend": "shortening" },
+            { "id": "sel_002_a", "name": "Chelsea", "label": "2", "odds": 4.00, "previousOdds": 4.10, "trend": "shortening" }
+          ]
+        },
+        {
+          "id": "mkt_002_ou",
+          "name": "Over/Under 2.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_002_ov", "name": "Over 2.5", "label": "Over", "odds": 1.85, "previousOdds": 1.83, "trend": "drifting" },
+            { "id": "sel_002_un", "name": "Under 2.5", "label": "Under", "odds": 1.95, "previousOdds": 1.97, "trend": "shortening" }
+          ]
+        },
+        {
+          "id": "mkt_002_btts",
+          "name": "Both Teams to Score",
+          "type": "YES_NO",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_002_btts_y", "name": "Yes", "label": "Yes", "odds": 1.72, "previousOdds": 1.70, "trend": "drifting" },
+            { "id": "sel_002_btts_n", "name": "No", "label": "No", "odds": 2.05, "previousOdds": 2.10, "trend": "shortening" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_003",
+      "sportId": "sport_football",
+      "competitionId": "comp_ucl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_rma",
+        "name": "Real Madrid",
+        "shortName": "RMA",
+        "logo": "/teams/real-madrid.svg"
+      },
+      "awayTeam": {
+        "id": "team_bay",
+        "name": "Bayern Munich",
+        "shortName": "BAY",
+        "logo": "/teams/bayern.svg"
+      },
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "matchClock": {
+        "minute": 52,
+        "period": "2H",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T20:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_003_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_003_h", "name": "Real Madrid", "label": "1", "odds": 2.10, "previousOdds": 2.15, "trend": "shortening" },
+            { "id": "sel_003_d", "name": "Draw", "label": "X", "odds": 3.30, "previousOdds": 3.25, "trend": "drifting" },
+            { "id": "sel_003_a", "name": "Bayern Munich", "label": "2", "odds": 3.50, "previousOdds": 3.45, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_003_ou",
+          "name": "Over/Under 2.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_003_ov", "name": "Over 2.5", "label": "Over", "odds": 1.70, "previousOdds": 1.75, "trend": "shortening" },
+            { "id": "sel_003_un", "name": "Under 2.5", "label": "Under", "odds": 2.15, "previousOdds": 2.10, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_003_btts",
+          "name": "Both Teams to Score",
+          "type": "YES_NO",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_003_btts_y", "name": "Yes", "label": "Yes", "odds": 1.40, "previousOdds": 1.45, "trend": "shortening" },
+            { "id": "sel_003_btts_n", "name": "No", "label": "No", "odds": 2.90, "previousOdds": 2.80, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_004",
+      "sportId": "sport_football",
+      "competitionId": "comp_laliga",
+      "status": "upcoming",
+      "homeTeam": {
+        "id": "team_fcb",
+        "name": "FC Barcelona",
+        "shortName": "FCB",
+        "logo": "/teams/barcelona.svg"
+      },
+      "awayTeam": {
+        "id": "team_atm",
+        "name": "Atletico Madrid",
+        "shortName": "ATM",
+        "logo": "/teams/atletico.svg"
+      },
+      "score": null,
+      "matchClock": null,
+      "startTime": "2026-04-13T20:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_004_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_004_h", "name": "FC Barcelona", "label": "1", "odds": 1.75, "previousOdds": 1.75, "trend": "stable" },
+            { "id": "sel_004_d", "name": "Draw", "label": "X", "odds": 3.80, "previousOdds": 3.80, "trend": "stable" },
+            { "id": "sel_004_a", "name": "Atletico Madrid", "label": "2", "odds": 4.50, "previousOdds": 4.50, "trend": "stable" }
+          ]
+        },
+        {
+          "id": "mkt_004_ou",
+          "name": "Over/Under 2.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_004_ov", "name": "Over 2.5", "label": "Over", "odds": 1.90, "previousOdds": 1.90, "trend": "stable" },
+            { "id": "sel_004_un", "name": "Under 2.5", "label": "Under", "odds": 1.90, "previousOdds": 1.90, "trend": "stable" }
+          ]
+        },
+        {
+          "id": "mkt_004_btts",
+          "name": "Both Teams to Score",
+          "type": "YES_NO",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_004_btts_y", "name": "Yes", "label": "Yes", "odds": 1.80, "previousOdds": 1.80, "trend": "stable" },
+            { "id": "sel_004_btts_n", "name": "No", "label": "No", "odds": 1.95, "previousOdds": 1.95, "trend": "stable" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_005",
+      "sportId": "sport_football",
+      "competitionId": "comp_bundesliga",
+      "status": "upcoming",
+      "homeTeam": {
+        "id": "team_bvb",
+        "name": "Borussia Dortmund",
+        "shortName": "BVB",
+        "logo": "/teams/dortmund.svg"
+      },
+      "awayTeam": {
+        "id": "team_rbl",
+        "name": "RB Leipzig",
+        "shortName": "RBL",
+        "logo": "/teams/leipzig.svg"
+      },
+      "score": null,
+      "matchClock": null,
+      "startTime": "2026-04-14T17:30:00Z",
+      "markets": [
+        {
+          "id": "mkt_005_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_005_h", "name": "Borussia Dortmund", "label": "1", "odds": 2.20, "previousOdds": 2.20, "trend": "stable" },
+            { "id": "sel_005_d", "name": "Draw", "label": "X", "odds": 3.60, "previousOdds": 3.60, "trend": "stable" },
+            { "id": "sel_005_a", "name": "RB Leipzig", "label": "2", "odds": 3.10, "previousOdds": 3.10, "trend": "stable" }
+          ]
+        },
+        {
+          "id": "mkt_005_ou",
+          "name": "Over/Under 2.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_005_ov", "name": "Over 2.5", "label": "Over", "odds": 1.65, "previousOdds": 1.65, "trend": "stable" },
+            { "id": "sel_005_un", "name": "Under 2.5", "label": "Under", "odds": 2.25, "previousOdds": 2.25, "trend": "stable" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_006",
+      "sportId": "sport_football",
+      "competitionId": "comp_epl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_tot",
+        "name": "Tottenham Hotspur",
+        "shortName": "TOT",
+        "logo": "/teams/tottenham.svg"
+      },
+      "awayTeam": {
+        "id": "team_mun",
+        "name": "Manchester United",
+        "shortName": "MUN",
+        "logo": "/teams/man-utd.svg"
+      },
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "matchClock": {
+        "minute": 78,
+        "period": "2H",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T15:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_006_1x2",
+          "name": "Match Winner",
+          "type": "1X2",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_006_h", "name": "Tottenham", "label": "1", "odds": 1.35, "previousOdds": 1.40, "trend": "shortening" },
+            { "id": "sel_006_d", "name": "Draw", "label": "X", "odds": 5.50, "previousOdds": 5.00, "trend": "drifting" },
+            { "id": "sel_006_a", "name": "Manchester United", "label": "2", "odds": 8.50, "previousOdds": 7.50, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_006_ou",
+          "name": "Over/Under 4.5 Goals",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_006_ov", "name": "Over 4.5", "label": "Over", "odds": 1.55, "previousOdds": 1.60, "trend": "shortening" },
+            { "id": "sel_006_un", "name": "Under 4.5", "label": "Under", "odds": 2.40, "previousOdds": 2.30, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_007",
+      "sportId": "sport_basketball",
+      "competitionId": "comp_nba",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_lal",
+        "name": "LA Lakers",
+        "shortName": "LAL",
+        "logo": "/teams/lakers.svg"
+      },
+      "awayTeam": {
+        "id": "team_bos",
+        "name": "Boston Celtics",
+        "shortName": "BOS",
+        "logo": "/teams/celtics.svg"
+      },
+      "score": {
+        "home": 78,
+        "away": 82
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "Q3",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T19:30:00Z",
+      "markets": [
+        {
+          "id": "mkt_007_ml",
+          "name": "Money Line",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_007_h", "name": "LA Lakers", "label": "1", "odds": 2.30, "previousOdds": 2.20, "trend": "drifting" },
+            { "id": "sel_007_a", "name": "Boston Celtics", "label": "2", "odds": 1.62, "previousOdds": 1.68, "trend": "shortening" }
+          ]
+        },
+        {
+          "id": "mkt_007_spread",
+          "name": "Point Spread (-3.5)",
+          "type": "SPREAD",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_007_sh", "name": "Lakers +3.5", "label": "+3.5", "odds": 1.90, "previousOdds": 1.88, "trend": "drifting" },
+            { "id": "sel_007_sa", "name": "Celtics -3.5", "label": "-3.5", "odds": 1.90, "previousOdds": 1.92, "trend": "shortening" }
+          ]
+        },
+        {
+          "id": "mkt_007_total",
+          "name": "Total Points (Over/Under 215.5)",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_007_ov", "name": "Over 215.5", "label": "Over", "odds": 1.85, "previousOdds": 1.87, "trend": "shortening" },
+            { "id": "sel_007_un", "name": "Under 215.5", "label": "Under", "odds": 1.95, "previousOdds": 1.93, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_008",
+      "sportId": "sport_basketball",
+      "competitionId": "comp_nba",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_gsw",
+        "name": "Golden State Warriors",
+        "shortName": "GSW",
+        "logo": "/teams/warriors.svg"
+      },
+      "awayTeam": {
+        "id": "team_den",
+        "name": "Denver Nuggets",
+        "shortName": "DEN",
+        "logo": "/teams/nuggets.svg"
+      },
+      "score": {
+        "home": 55,
+        "away": 48
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "Q2",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T21:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_008_ml",
+          "name": "Money Line",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_008_h", "name": "Golden State", "label": "1", "odds": 1.55, "previousOdds": 1.60, "trend": "shortening" },
+            { "id": "sel_008_a", "name": "Denver", "label": "2", "odds": 2.45, "previousOdds": 2.35, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_008_total",
+          "name": "Total Points (Over/Under 222.5)",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_008_ov", "name": "Over 222.5", "label": "Over", "odds": 1.92, "previousOdds": 1.90, "trend": "drifting" },
+            { "id": "sel_008_un", "name": "Under 222.5", "label": "Under", "odds": 1.88, "previousOdds": 1.90, "trend": "shortening" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_009",
+      "sportId": "sport_basketball",
+      "competitionId": "comp_nba",
+      "status": "upcoming",
+      "homeTeam": {
+        "id": "team_mil",
+        "name": "Milwaukee Bucks",
+        "shortName": "MIL",
+        "logo": "/teams/bucks.svg"
+      },
+      "awayTeam": {
+        "id": "team_phi",
+        "name": "Philadelphia 76ers",
+        "shortName": "PHI",
+        "logo": "/teams/76ers.svg"
+      },
+      "score": null,
+      "matchClock": null,
+      "startTime": "2026-04-14T00:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_009_ml",
+          "name": "Money Line",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_009_h", "name": "Milwaukee Bucks", "label": "1", "odds": 1.70, "previousOdds": 1.70, "trend": "stable" },
+            { "id": "sel_009_a", "name": "Philadelphia 76ers", "label": "2", "odds": 2.15, "previousOdds": 2.15, "trend": "stable" }
+          ]
+        },
+        {
+          "id": "mkt_009_total",
+          "name": "Total Points (Over/Under 228.5)",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_009_ov", "name": "Over 228.5", "label": "Over", "odds": 1.90, "previousOdds": 1.90, "trend": "stable" },
+            { "id": "sel_009_un", "name": "Under 228.5", "label": "Under", "odds": 1.90, "previousOdds": 1.90, "trend": "stable" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_010",
+      "sportId": "sport_tennis",
+      "competitionId": "comp_atp",
+      "status": "live",
+      "homeTeam": {
+        "id": "player_sin",
+        "name": "Jannik Sinner",
+        "shortName": "SIN",
+        "logo": "/players/sinner.svg"
+      },
+      "awayTeam": {
+        "id": "player_alc",
+        "name": "Carlos Alcaraz",
+        "shortName": "ALC",
+        "logo": "/players/alcaraz.svg"
+      },
+      "score": {
+        "home": 2,
+        "away": 1,
+        "detail": "6-4, 3-6, 4-2"
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "Set 3",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T14:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_010_ml",
+          "name": "Match Winner",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_010_h", "name": "Sinner", "label": "1", "odds": 1.35, "previousOdds": 1.40, "trend": "shortening" },
+            { "id": "sel_010_a", "name": "Alcaraz", "label": "2", "odds": 3.10, "previousOdds": 2.90, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_010_sets",
+          "name": "Total Sets (Over/Under 3.5)",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_010_ov", "name": "Over 3.5 Sets", "label": "Over", "odds": 2.60, "previousOdds": 2.50, "trend": "drifting" },
+            { "id": "sel_010_un", "name": "Under 3.5 Sets", "label": "Under", "odds": 1.48, "previousOdds": 1.52, "trend": "shortening" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_011",
+      "sportId": "sport_tennis",
+      "competitionId": "comp_wta",
+      "status": "live",
+      "homeTeam": {
+        "id": "player_swi",
+        "name": "Iga Swiatek",
+        "shortName": "SWI",
+        "logo": "/players/swiatek.svg"
+      },
+      "awayTeam": {
+        "id": "player_sab",
+        "name": "Aryna Sabalenka",
+        "shortName": "SAB",
+        "logo": "/players/sabalenka.svg"
+      },
+      "score": {
+        "home": 1,
+        "away": 0,
+        "detail": "6-3, 2-1"
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "Set 2",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T16:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_011_ml",
+          "name": "Match Winner",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_011_h", "name": "Swiatek", "label": "1", "odds": 1.28, "previousOdds": 1.32, "trend": "shortening" },
+            { "id": "sel_011_a", "name": "Sabalenka", "label": "2", "odds": 3.60, "previousOdds": 3.40, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_012",
+      "sportId": "sport_ice_hockey",
+      "competitionId": "comp_nhl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_edm",
+        "name": "Edmonton Oilers",
+        "shortName": "EDM",
+        "logo": "/teams/oilers.svg"
+      },
+      "awayTeam": {
+        "id": "team_fla",
+        "name": "Florida Panthers",
+        "shortName": "FLA",
+        "logo": "/teams/panthers.svg"
+      },
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "P2",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T19:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_012_ml",
+          "name": "Money Line",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_012_h", "name": "Edmonton", "label": "1", "odds": 2.50, "previousOdds": 2.40, "trend": "drifting" },
+            { "id": "sel_012_a", "name": "Florida", "label": "2", "odds": 1.55, "previousOdds": 1.60, "trend": "shortening" }
+          ]
+        },
+        {
+          "id": "mkt_012_total",
+          "name": "Total Goals (Over/Under 5.5)",
+          "type": "OVER_UNDER",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_012_ov", "name": "Over 5.5", "label": "Over", "odds": 1.75, "previousOdds": 1.80, "trend": "shortening" },
+            { "id": "sel_012_un", "name": "Under 5.5", "label": "Under", "odds": 2.05, "previousOdds": 2.00, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_013",
+      "sportId": "sport_cricket",
+      "competitionId": "comp_ipl",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_csk",
+        "name": "Chennai Super Kings",
+        "shortName": "CSK",
+        "logo": "/teams/csk.svg"
+      },
+      "awayTeam": {
+        "id": "team_mi",
+        "name": "Mumbai Indians",
+        "shortName": "MI",
+        "logo": "/teams/mi.svg"
+      },
+      "score": {
+        "home": 145,
+        "away": 0,
+        "detail": "145/4 (16.2 ov)"
+      },
+      "matchClock": {
+        "minute": 0,
+        "period": "1st Innings",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T14:30:00Z",
+      "markets": [
+        {
+          "id": "mkt_013_ml",
+          "name": "Match Winner",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_013_h", "name": "Chennai Super Kings", "label": "1", "odds": 1.80, "previousOdds": 1.85, "trend": "shortening" },
+            { "id": "sel_013_a", "name": "Mumbai Indians", "label": "2", "odds": 2.00, "previousOdds": 1.95, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_014",
+      "sportId": "sport_esports",
+      "competitionId": "comp_lol_worlds",
+      "status": "live",
+      "homeTeam": {
+        "id": "team_g2",
+        "name": "G2 Esports",
+        "shortName": "G2",
+        "logo": "/teams/g2.svg"
+      },
+      "awayTeam": {
+        "id": "team_fnc",
+        "name": "Fnatic",
+        "shortName": "FNC",
+        "logo": "/teams/fnatic.svg"
+      },
+      "score": {
+        "home": 1,
+        "away": 0,
+        "detail": "Game 2 in progress"
+      },
+      "matchClock": {
+        "minute": 24,
+        "period": "Game 2",
+        "isRunning": true
+      },
+      "startTime": "2026-04-13T18:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_014_ml",
+          "name": "Match Winner (Bo3)",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_014_h", "name": "G2 Esports", "label": "1", "odds": 1.25, "previousOdds": 1.30, "trend": "shortening" },
+            { "id": "sel_014_a", "name": "Fnatic", "label": "2", "odds": 3.80, "previousOdds": 3.50, "trend": "drifting" }
+          ]
+        },
+        {
+          "id": "mkt_014_map",
+          "name": "Map 2 Winner",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_014_m2h", "name": "G2 Map 2", "label": "1", "odds": 1.50, "previousOdds": 1.55, "trend": "shortening" },
+            { "id": "sel_014_m2a", "name": "Fnatic Map 2", "label": "2", "odds": 2.50, "previousOdds": 2.40, "trend": "drifting" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evt_015",
+      "sportId": "sport_esports",
+      "competitionId": "comp_csgo_major",
+      "status": "upcoming",
+      "homeTeam": {
+        "id": "team_navi",
+        "name": "Natus Vincere",
+        "shortName": "NAVI",
+        "logo": "/teams/navi.svg"
+      },
+      "awayTeam": {
+        "id": "team_faze",
+        "name": "FaZe Clan",
+        "shortName": "FAZE",
+        "logo": "/teams/faze.svg"
+      },
+      "score": null,
+      "matchClock": null,
+      "startTime": "2026-04-14T15:00:00Z",
+      "markets": [
+        {
+          "id": "mkt_015_ml",
+          "name": "Match Winner (Bo3)",
+          "type": "MONEY_LINE",
+          "suspended": false,
+          "selections": [
+            { "id": "sel_015_h", "name": "NAVI", "label": "1", "odds": 1.85, "previousOdds": 1.85, "trend": "stable" },
+            { "id": "sel_015_a", "name": "FaZe", "label": "2", "odds": 1.95, "previousOdds": 1.95, "trend": "stable" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "betSlipConfig": {
+    "minStake": 0.50,
+    "maxStake": 10000.00,
+    "maxSelections": 20,
+    "maxPayout": 250000.00,
+    "currency": "EUR",
+    "currencySymbol": "\u20AC",
+    "betTypes": [
+      { "id": "single", "name": "Single", "description": "Individual bets on each selection" },
+      { "id": "accumulator", "name": "Accumulator", "description": "All selections must win" },
+      { "id": "system", "name": "System", "description": "Combination of accumulators" }
+    ]
+  },
+
+  "responsibleGambling": {
+    "sessionTimerEnabled": true,
+    "sessionTimerIntervalMinutes": 60,
+    "depositLimits": {
+      "daily": { "min": 10, "max": 50000 },
+      "weekly": { "min": 10, "max": 100000 },
+      "monthly": { "min": 10, "max": 250000 }
+    },
+    "selfExclusionOptions": [
+      { "id": "24h", "label": "24 Hours" },
+      { "id": "7d", "label": "7 Days" },
+      { "id": "30d", "label": "30 Days" },
+      { "id": "6m", "label": "6 Months" },
+      { "id": "permanent", "label": "Permanent" }
+    ],
+    "messages": {
+      "banner": "Gambling should be entertaining, not a way to make money. Play responsibly.",
+      "sessionReminder": "You have been playing for {duration}. Would you like to take a break?",
+      "depositLimitReached": "You have reached your {period} deposit limit of {currency}{amount}."
+    },
+    "helplineUrl": "https://www.begambleaware.org",
+    "helplinePhone": "0808 8020 133",
+    "minimumAge": 18
+  },
+
+  "oddsSimulation": {
+    "description": "Configuration for simulating real-time odds changes in the mock environment",
+    "updateIntervalMs": {
+      "live": { "min": 1000, "max": 3000 },
+      "upcoming": { "min": 15000, "max": 30000 }
+    },
+    "maxOddsChange": 0.15,
+    "suspensionProbability": 0.02,
+    "suspensionDurationMs": { "min": 3000, "max": 8000 }
+  }
+}

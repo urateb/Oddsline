@@ -16,10 +16,13 @@ import { cn } from '@/lib/utils';
 import type { BetSlipConfig } from '@/types/sportsbook';
 
 import { BetSlipContent } from './bet-slip-content';
+import { OpenBetsList } from './open-bets-list';
 
 export interface BetSlipPanelProps {
   config: Pick<BetSlipConfig, 'minStake' | 'maxStake' | 'currencySymbol'>;
 }
+
+type BetSlipTab = 'slip' | 'open';
 
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -68,6 +71,7 @@ export function BetSlipPanel({ config }: BetSlipPanelProps) {
   const isOpen = useUiStore((state) => state.isBetSlipOpen);
   const setOpen = useUiStore((state) => state.setBetSlipOpen);
   const isDesktop = useIsDesktop();
+  const [tab, setTab] = useState<BetSlipTab>('slip');
 
   const limits = { minStake: config.minStake, maxStake: config.maxStake };
 
@@ -112,10 +116,44 @@ export function BetSlipPanel({ config }: BetSlipPanelProps) {
               )}
             </SheetTitle>
           </SheetHeader>
-          <BetSlipContent
-            limits={limits}
-            currencySymbol={config.currencySymbol}
-          />
+
+          <div
+            className="grid shrink-0 grid-cols-2 gap-1 border-b border-border bg-muted/40 p-2"
+            role="tablist"
+            aria-label="Bet slip views"
+          >
+            <Button
+              type="button"
+              size="sm"
+              role="tab"
+              aria-selected={tab === 'slip'}
+              variant={tab === 'slip' ? 'default' : 'ghost'}
+              className="h-8"
+              onClick={() => setTab('slip')}
+            >
+              Slip
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              role="tab"
+              aria-selected={tab === 'open'}
+              variant={tab === 'open' ? 'default' : 'ghost'}
+              className="h-8"
+              onClick={() => setTab('open')}
+            >
+              Open bets
+            </Button>
+          </div>
+
+          {tab === 'slip' ? (
+            <BetSlipContent
+              limits={limits}
+              currencySymbol={config.currencySymbol}
+            />
+          ) : (
+            <OpenBetsList active={isOpen && tab === 'open'} />
+          )}
         </SheetContent>
       </Sheet>
     </>

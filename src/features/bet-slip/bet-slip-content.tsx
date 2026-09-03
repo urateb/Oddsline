@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MousePointerClick } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -30,6 +30,8 @@ import {
 import { cn } from '@/lib/utils';
 import { useBetSlipStore } from '@/stores/bet-slip-store';
 
+import { usePlaceBet } from './use-bets';
+
 export interface BetSlipContentProps {
   limits: StakeLimits;
   currencySymbol: string;
@@ -44,6 +46,7 @@ export function BetSlipContent({
   const setBetType = useBetSlipStore((state) => state.setBetType);
   const removeSelection = useBetSlipStore((state) => state.removeSelection);
   const clear = useBetSlipStore((state) => state.clear);
+  const placeBet = usePlaceBet();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
 
@@ -74,13 +77,35 @@ export function BetSlipContent({
     setConfirmOpen(true);
   }
 
-  function handleConfirm() {
-    toast.success('Bet placed', {
-      description: `${selections.length} selection${selections.length === 1 ? '' : 's'} · Stake ${formatCurrency(returns.totalStake, currencySymbol)}`,
-    });
-    clear();
-    reset();
-    setConfirmOpen(false);
+  async function handleConfirm(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+
+    if (placeBet.isPending || !hasPreviewableStake) {
+      return;
+    }
+
+    try {
+      await placeBet.mutateAsync({
+        betType: effectiveBetType,
+        stake: parsedStake,
+        totalStake: returns.totalStake,
+        potentialReturns: returns.potentialReturns,
+        currencySymbol,
+        selections,
+      });
+
+      toast.success('Bet placed', {
+        description: `${selections.length} selection${selections.length === 1 ? '' : 's'} · Stake ${formatCurrency(returns.totalStake, currencySymbol)}`,
+      });
+      clear();
+      reset();
+      setConfirmOpen(false);
+    } catch (error) {
+      toast.error('Couldn’t place bet', {
+        description:
+          error instanceof Error ? error.message : 'Please try again.',
+      });
+    }
   }
 
   if (selections.length === 0) {
@@ -219,9 +244,14 @@ export function BetSlipContent({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirm}>
-              Confirm bet
+            <AlertDialogCancel disabled={placeBet.isPending}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleConfirm}
+              disabled={placeBet.isPending}
+            >
+              {placeBet.isPending ? 'Placing…' : 'Confirm bet'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

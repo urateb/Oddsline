@@ -3,18 +3,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 import type { BetSlipBetType, BetSlipSelection } from '@/types/bet-slip';
+import type { PlacedBet } from '@/types/placed-bet';
 
-export interface PlacedBet {
-  id: string;
-  createdAt: string;
-  betType: BetSlipBetType;
-  stake: number;
-  totalStake: number;
-  potentialReturns: number;
-  currencySymbol: string;
-  status: 'open' | 'settled';
-  selections: BetSlipSelection[];
-}
+export type { PlacedBet };
 
 interface BetsFile {
   bets: PlacedBet[];

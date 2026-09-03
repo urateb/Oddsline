@@ -25,7 +25,7 @@ const STEPS = [
   {
     icon: LineChart,
     title: 'Confirm with clarity',
-    body: 'Review the ticket, place the bet, and keep responsible limits in view.',
+    body: 'Review the ticket, place the bet, and find it again under Open bets.',
   },
 ] as const;
 

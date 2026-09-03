@@ -64,36 +64,9 @@ async function fetchLiveEventsForSport(sport: Sport): Promise<{
 
 export async function getSports(): Promise<Sport[]> {
   await delay(50);
-
-  const sports = [...data.sports].sort((a, b) => a.order - b.order);
-
-  if (!hasOddsApiKey()) {
-    return sports;
-  }
-
-  const withCounts = await Promise.all(
-    sports.map(async (sport) => {
-      const live = await fetchLiveEventsForSport(sport);
-      if (!live) {
-        return sport;
-      }
-
-      const liveEventCount = live.events.filter(
-        (event) => event.status === 'live',
-      ).length;
-      const upcomingEventCount = live.events.filter(
-        (event) => event.status === 'upcoming',
-      ).length;
-
-      return {
-        ...sport,
-        liveEventCount,
-        upcomingEventCount,
-      };
-    }),
-  );
-
-  return withCounts;
+  // Keep lobby on catalog counts — live Odds API calls happen on sport pages
+  // and /api/sports/[slug]/events to avoid burning free-tier quota.
+  return [...data.sports].sort((a, b) => a.order - b.order);
 }
 
 export async function getSportBySlug(slug: string): Promise<Sport | undefined> {
@@ -157,14 +130,12 @@ export async function getResponsibleGambling(): Promise<ResponsibleGambling> {
 }
 
 export async function getBoardStats() {
-  const sports = await getSports();
-  const eventLists = await Promise.all(
-    sports.map((sport) => getEventsBySport(sport.id)),
-  );
-  const events = eventLists.flat();
+  await delay(50);
+  // Catalog KPIs only — avoid Odds API calls on the homepage.
+  const events = data.events;
 
   return {
-    sports: sports.length,
+    sports: data.sports.length,
     live: events.filter((event) => event.status === 'live').length,
     upcoming: events.filter((event) => event.status === 'upcoming').length,
     markets: events.reduce((total, event) => total + event.markets.length, 0),

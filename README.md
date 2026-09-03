@@ -1,142 +1,137 @@
 # Oddsline
 
-A modern sportsbook UI with a sports lobby, live/upcoming events, optional real odds from The Odds API, a full bet slip + open-bets history, theme switching, and responsible gambling UI.
+A sportsbook front-end built for real operators — not a pile of disconnected components.
 
-Built with Next.js App Router, React 19, TypeScript, TanStack Query, and Zustand.
+Oddsline covers the path players actually take: find a market, follow the line, build a slip, place the bet, and check open tickets. It’s meant to be something a product team can demo tomorrow and an engineering team can wire into a real stack without rewriting the UI.
+
+---
+
+## What you get
+
+**A complete betting surface.** Sports lobby, live and upcoming boards, bet slip, confirmation, and open bets — end to end.
+
+**A slip that works on phones.** Drawer UI, stake limits, clear returns, and a confirm step so people don’t fat-finger a ticket.
+
+**Odds you can actually feed.** Plug in [The Odds API](https://the-odds-api.com) for live prices, or keep the demo feed with simulated movement for sales calls and QA.
+
+**Player protection that stays visible.** Session timing and responsible-gambling prompts sit alongside the board, not buried in a footer.
+
+**Clean seams for your backend.** Odds and bets go through adapters. Swap the demo store for your wallet, risk, or settlement service when you’re ready — the UI doesn’t need to change.
+
+---
 
 ## Screenshots
 
-### Live events on desktop
+### Desktop event board
 
 ![Desktop live events](docs/screenshots/desktop.png)
 
-### Bet slip on mobile
+### Mobile bet slip
 
 ![Mobile bet slip](docs/screenshots/mobile-bet-slip.png)
 
-## Features
+---
 
-* Sports lobby with server-rendered sports data
-* Sport pages with live and upcoming events
-* Optional live odds via [The Odds API](https://the-odds-api.com) (falls back to mock + simulator)
-* Odds change animations (shorten / drift) on demo feed
-* Bet slip with add/remove selections
-* Stake validation and confirmation
-* Place bet API + open bets history (file-backed demo store)
-* Light/dark theme
-* Responsible gambling banner with session timer
-* Responsive desktop and mobile layouts
+## How it’s put together
 
-## Tech Stack
+Most of the first paint comes from the server. The client handles the lively parts: odds polling, the slip, theme, and timers.
 
-* Next.js 16 (App Router)
-* React 19
-* TypeScript (strict mode)
-* Tailwind CSS v4
-* shadcn/ui
-* Zustand
-* TanStack Query v5
-* React Hook Form + Zod
-* Vitest + Testing Library
-* Playwright
-* pnpm
+| Layer | Job |
+| --- | --- |
+| Server Components | Lobby and sport boards on first load |
+| TanStack Query | Live odds, open bets, cache freshness |
+| Zustand | Slip, theme, UI chrome |
+| Odds adapter | The Odds API, or mock data + simulator |
+| Bets adapter | Place and list tickets via `/api/bets` |
 
-> React Compiler is enabled. The app still uses `React.memo` where it helps make render boundaries explicit under frequent odds updates.
+```
+src/
+├── app/                 # Routes and HTTP APIs
+├── features/
+│   ├── sportsbook/      # Lobby, events, odds simulation
+│   ├── bet-slip/        # Slip, placement, open bets
+│   └── responsible-gambling/
+├── lib/
+│   ├── odds-api/        # External odds provider
+│   └── bets/            # Ticket schema and persistence
+├── components/          # Shared UI
+└── types/
+```
 
-## Getting Started
+More on shared components: [`src/components/shared/README.md`](src/components/shared/README.md)
 
-Requirements:
+---
 
-* Node.js 20+
-* pnpm
+## Try it locally
+
+You’ll need Node.js 20+ and [pnpm](https://pnpm.io).
 
 ```bash
 pnpm install
 cp .env.example .env.local
-# optional: set THE_ODDS_API_KEY for live odds
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000).
 
-Use `localhost` instead of `127.0.0.1` locally — Next treats them as different origins, which can cause HMR/hydration issues.
+Use `localhost`, not `127.0.0.1` — Next.js treats them as different origins, which can mess with HMR and hydration.
 
 ### Live odds (optional)
 
-1. Create a free key at [the-odds-api.com](https://the-odds-api.com).
-2. Set `THE_ODDS_API_KEY` in `.env.local`.
-3. Restart the dev server.
+1. Grab a key from [the-odds-api.com](https://the-odds-api.com).
+2. Put it in `.env.local` as `THE_ODDS_API_KEY`.
+3. Restart the server.
 
-Mapped sports: football (EPL), basketball (NBA), ice hockey (NHL), cricket (T20), tennis (ATP). Esports stays on the mock board. Without a key, every sport uses mock fixtures and the client odds simulator.
+| Market in Oddsline | Feed |
+| --- | --- |
+| Football | EPL |
+| Basketball | NBA |
+| Ice hockey | NHL |
+| Cricket | International T20 |
+| Tennis | ATP |
+| Esports | Demo catalog |
 
-### Bets
-
-Placing a bet `POST`s to `/api/bets` and persists to `data/bets-store.json` on the server. Open bets load from `GET /api/bets` in the bet slip drawer.
-
-## Scripts
-
-| Command             | Description                |
-| ------------------- | -------------------------- |
-| `pnpm dev`          | Start development server   |
-| `pnpm build`        | Create production build    |
-| `pnpm start`        | Run production build       |
-| `pnpm lint`         | Run ESLint                 |
-| `pnpm format`       | Format files with Prettier |
-| `pnpm format:check` | Check formatting           |
-| `pnpm typecheck`    | Run TypeScript checks      |
-| `pnpm test`         | Run unit tests             |
-| `pnpm test:e2e`     | Run Playwright test        |
-
-## Project Structure
-
-```
-src/
-├── app/                       # Next.js routes + API
-├── components/
-│   ├── ui/                    # shadcn/ui primitives
-│   ├── shared/                # Reusable product components
-│   └── providers/             # App providers
-├── features/
-│   ├── sportsbook/            # Sports data, events, odds simulator
-│   ├── bet-slip/              # Bet slip + open bets
-│   ├── layout/                # Header and layout
-│   └── responsible-gambling/  # RG banner and session timer
-├── stores/                    # Zustand stores
-├── lib/
-│   ├── odds-api/              # The Odds API client + mapping
-│   └── bets/                  # Place-bet schema + file store
-├── types/                     # Shared TypeScript types
-└── data/                      # Mock sportsbook data
-```
-
-Shared component docs: `src/components/shared/README.md`
-
-## Architecture
-
-### Server vs client
-
-Server Components fetch and render the lobby and initial sport-page data. Client Components handle live polling, bet slip interactions, theme, timers, and animations — keeping most of the first paint on the server.
-
-### Odds data
-
-`src/features/sportsbook/api.ts` prefers The Odds API when `THE_ODDS_API_KEY` is set and the sport is mapped; otherwise it serves `src/data/sportsbook-mock-data.json`. Sport pages poll `/api/sports/[slug]/events` every 30s on the live feed, or run the client simulator on the demo feed.
+No key? Everything runs on the demo catalog with simulated odds. Fine for demos and tests.
 
 ### Bets
 
-`POST /api/bets` validates with Zod and writes to a JSON file store. This is a local demo persistence layer — swap the store for a database without changing the UI.
+- `POST /api/bets` — validate and place a ticket  
+- `GET /api/bets` — load open bets in the slip drawer  
 
-### State management
+Tickets land in `data/bets-store.json` for local demos. That file store is intentional and temporary — replace it with your real ledger when you integrate.
 
-| Tool              | Responsibility                        |
-| ----------------- | ------------------------------------- |
-| Server Components | Initial sports and event data         |
-| TanStack Query    | Live events, bets list, polling/cache |
-| Zustand           | Bet slip, theme and UI state          |
+---
 
-## Testing
+## Stack
 
-Tests focus on regression-prone areas rather than coverage for its own sake.
+Next.js 16, React 19, TypeScript (strict), Tailwind CSS v4, shadcn/ui, TanStack Query, Zustand, React Hook Form, Zod, Vitest, Playwright, pnpm.
 
-**Unit:** OddsButton states and flash rules, bet slip store, stake validation, BetSlipCard remove.
+React Compiler is on. We still memo some odds-heavy rows so live boards stay smooth.
 
-**E2E:** Lobby → football → select odds → stake → place bet → confirm → success toast.
+| Command | What it does |
+| --- | --- |
+| `pnpm dev` | Run locally |
+| `pnpm build` / `pnpm start` | Production build |
+| `pnpm typecheck` | TypeScript |
+| `pnpm lint` / `pnpm format` | Lint and format |
+| `pnpm test` | Unit tests |
+| `pnpm test:e2e` | Critical path: lobby → place bet |
+
+Tests focus on the stuff that breaks trust: odds button states, stake limits, slip changes, and the full place-bet flow.
+
+---
+
+## Where this goes next
+
+Common next steps for operator teams:
+
+- Point bets at your wallet / risk / settlement APIs  
+- Feed odds from your own trading stack (or multiple books)  
+- White-label themes and domains for partners  
+- Add markets beyond match winner — totals, handicaps, player props  
+
+---
+
+## License
+
+Private evaluation build. For licensing, white-label work, or help integrating — open an issue or get in touch.

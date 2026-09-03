@@ -1,35 +1,12 @@
 import Link from 'next/link';
 
 import { OddslineLogo } from '@/components/shared/oddsline-logo';
-import { getBoardStats } from '@/features/sportsbook/api';
 
-export async function SiteFooter() {
-  const stats = await getBoardStats();
-
-  const kpis = [
-    { label: 'Live events', value: stats.live },
-    { label: 'Upcoming', value: stats.upcoming },
-    { label: 'Open markets', value: stats.markets },
-    { label: 'Sports covered', value: stats.sports },
-  ] as const;
-
+export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border bg-muted/20">
       <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
-        <dl className="grid gap-6 border-b border-border pb-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {kpis.map((kpi) => (
-            <div key={kpi.label} className="flex flex-col gap-1">
-              <dt className="text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
-                {kpi.label}
-              </dt>
-              <dd className="text-3xl font-semibold tracking-tight tabular-nums">
-                {kpi.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="grid gap-10 pt-10 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] sm:gap-12">
+        <div className="grid gap-10 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] sm:gap-12">
           <div className="flex flex-col gap-3">
             <Link
               href="/"

@@ -8,6 +8,7 @@ import {
   SportsLobby,
   SportsLobbySkeleton,
 } from '@/features/sportsbook/sports-lobby';
+import { getBoardStats } from '@/features/sportsbook/api';
 import { cn } from '@/lib/utils';
 
 const STEPS = [
@@ -27,6 +28,52 @@ const STEPS = [
     body: 'Review the ticket, place the bet, and keep responsible limits in view.',
   },
 ] as const;
+
+async function StayInControl() {
+  const stats = await getBoardStats();
+
+  const kpis = [
+    { label: 'Live events', value: stats.live },
+    { label: 'Upcoming', value: stats.upcoming },
+    { label: 'Open markets', value: stats.markets },
+    { label: 'Sports covered', value: stats.sports },
+  ] as const;
+
+  return (
+    <section
+      className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20"
+      aria-labelledby="control-heading"
+    >
+      <div className="flex flex-col gap-8 border-l-2 border-lime-400/70 pl-4 sm:pl-5">
+        <div className="flex flex-col gap-3">
+          <h2
+            id="control-heading"
+            className="text-lg font-semibold tracking-tight"
+          >
+            Stay in control
+          </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Oddsline keeps session time and responsible gambling resources
+            visible while you bet. Use the slip for decisions — not impulse.
+          </p>
+        </div>
+
+        <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {kpis.map((kpi) => (
+            <div key={kpi.label} className="flex flex-col gap-1">
+              <dt className="text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
+                {kpi.label}
+              </dt>
+              <dd className="text-3xl font-semibold tracking-tight tabular-nums">
+                {kpi.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -89,24 +136,29 @@ export default function HomePage() {
 
       <section
         id="markets"
-        className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-16 sm:px-8 sm:py-20"
+        className="scroll-mt-24 border-y border-lime-400/20 bg-lime-400/[0.07]"
         aria-labelledby="markets-heading"
       >
-        <div className="mb-8 flex flex-col gap-2 sm:mb-10">
-          <h2
-            id="markets-heading"
-            className="text-2xl font-semibold tracking-tight"
-          >
-            Markets
-          </h2>
-          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Pick a sport to enter the live board. Counts update with the
-            catalog — jump straight into what&apos;s running now.
-          </p>
+        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+          <div className="mb-8 flex flex-col gap-3 sm:mb-10">
+            <p className="text-xs font-semibold tracking-[0.18em] text-lime-600 uppercase dark:text-lime-300">
+              Main board
+            </p>
+            <h2
+              id="markets-heading"
+              className="text-3xl font-semibold tracking-tight sm:text-4xl"
+            >
+              Markets
+            </h2>
+            <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+              This is the core of Oddsline. Pick a sport to enter the live
+              board, follow prices as they move, and start building your slip.
+            </p>
+          </div>
+          <Suspense fallback={<SportsLobbySkeleton />}>
+            <SportsLobby />
+          </Suspense>
         </div>
-        <Suspense fallback={<SportsLobbySkeleton />}>
-          <SportsLobby />
-        </Suspense>
       </section>
 
       <section
@@ -150,17 +202,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
-        <div className="flex flex-col gap-3 border-l-2 border-lime-400/70 pl-4 sm:pl-5">
-          <h2 className="text-lg font-semibold tracking-tight">
-            Stay in control
-          </h2>
-          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-            Oddsline keeps session time and responsible gambling resources
-            visible while you bet. Use the slip for decisions — not impulse.
-          </p>
-        </div>
-      </section>
+      <Suspense
+        fallback={
+          <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
+            <div className="h-40 animate-pulse rounded-xl bg-muted/40" />
+          </section>
+        }
+      >
+        <StayInControl />
+      </Suspense>
     </main>
   );
 }
